@@ -5,3 +5,15 @@ pub struct Notification {
     timeout: Option<u32>,
     icon: Option<String>,
 }
+
+impl Notification {
+    pub fn new(summary: impl Into<String>) -> Self {
+        Self {
+            summary: summary.into(),
+            body: None,
+            urgency: None,
+            timeout: None,
+            icon: None,
+        }
+    }
+}
