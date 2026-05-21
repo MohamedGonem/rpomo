@@ -46,3 +46,9 @@ fn ask_session_length() -> Option<usize> {
 fn ask_break_length() -> Option<usize> {
     ask_question("Pomodoro", "How long is break time?")
 }
+
+fn calculate_sessions_length(sessions_count: usize, session_length: usize) -> Vec<usize> {
+    (0..sessions_count)
+        .map(|i| session_length * (sessions_count - i))
+        .collect()
+}
