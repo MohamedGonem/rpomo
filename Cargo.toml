@@ -1,0 +1,12 @@
+[package]
+name = "rpomo"
+version = "0.1.0"
+edition = "2024"
+description = "A simple Pomodoro timer using notify-send and zenity"
+license = "MIT"
+authors = ["Mohamed Gonem"]
+repository = "https://github.com/MohamedGonem/rpomo"
+readme = "README.md"
+keywords = ["pomodoro", "productivity", "timer"]
+
+[dependencies]
