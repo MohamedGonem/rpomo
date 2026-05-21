@@ -16,3 +16,7 @@ pub fn ask_continue(current_session: usize, total_sessions: usize) -> bool {
         current_session, total_sessions
     ))
 }
+
+pub fn ask_new() -> bool {
+    ask_question("done!\nStart new session?")
+}
