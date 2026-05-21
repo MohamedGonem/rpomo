@@ -36,4 +36,27 @@ impl Notification {
         self.icon = Some(icon.into());
         self
     }
+
+    pub fn send(self) {
+        let mut cmd = std::process::Command::new("notify-send");
+        if let Some(u) = self.urgency {
+            cmd.args(["--urgency", &u]);
+        }
+
+        if let Some(ms) = self.timeout {
+            cmd.args(["--expire-time", &ms.to_string()]);
+        }
+
+        if let Some(icon) = self.icon {
+            cmd.args(["--icon", &icon]);
+        }
+
+        cmd.arg(&self.summary);
+
+        if let Some(body) = self.body {
+            cmd.arg(&body);
+        }
+
+        cmd.spawn().ok();
+    }
 }
