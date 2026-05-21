@@ -9,8 +9,8 @@ impl Default for Session {
     fn default() -> Self {
         Self {
             sessions_count: 5,
-            session_length: 5,
-            sessions_time: vec![25, 20, 15, 10, 5],
+            session_length: 20,
+            sessions_time: vec![100, 80, 60, 40, 20],
             break_length: 5,
         }
     }
@@ -55,7 +55,7 @@ fn calculate_sessions_length(sessions_count: usize, session_length: usize) -> Ve
 
 pub fn ask() -> Session {
     let sessions_count = ask_n_sessions().unwrap_or(5);
-    let session_length = ask_session_length().unwrap_or(25);
+    let session_length = ask_session_length().unwrap_or(20);
 
     Session {
         sessions_count,
