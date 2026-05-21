@@ -15,3 +15,22 @@ impl Default for Session {
         }
     }
 }
+
+fn ask_question(title: &str, text: &str) -> Option<usize> {
+    let output = std::process::Command::new("zenity")
+        .args([
+            "--entry",
+            &format!("--title={}", title),
+            &format!("--text={}", text),
+            "--entry-text=5",
+        ])
+        .output()
+        .ok()?;
+
+    if !output.status.success() {
+        return None;
+    }
+
+    let input = String::from_utf8(output.stdout).ok()?;
+    input.trim().parse::<usize>().ok()
+}
