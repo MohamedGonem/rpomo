@@ -40,11 +40,11 @@ fn ask_n_sessions() -> Option<usize> {
 }
 
 fn ask_session_length() -> Option<usize> {
-    ask_question("Pomodoro", "How long is one session?")
+    ask_question("Pomodoro", "How long is one session in minutes?")
 }
 
 fn ask_break_length() -> Option<usize> {
-    ask_question("Pomodoro", "How long is break time?")
+    ask_question("Pomodoro", "How long is break time in minutes?")
 }
 
 fn calculate_sessions_length(sessions_count: usize, session_length: usize) -> Vec<usize> {
