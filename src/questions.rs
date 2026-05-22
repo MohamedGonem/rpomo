@@ -53,14 +53,15 @@ fn calculate_sessions_length(sessions_count: usize, session_length: usize) -> Ve
         .collect()
 }
 
-pub fn ask() -> Session {
-    let sessions_count = ask_n_sessions().unwrap_or(5);
-    let session_length = ask_session_length().unwrap_or(20);
+pub fn ask() -> Option<Session> {
+    let sessions_count = ask_n_sessions()?;
+    let session_length = ask_session_length()?;
+    let break_length = ask_break_length()?;
 
-    Session {
+    Some(Session {
         sessions_count,
         session_length,
         sessions_time: calculate_sessions_length(sessions_count, session_length),
-        break_length: ask_break_length().unwrap_or(5),
-    }
+        break_length,
+    })
 }

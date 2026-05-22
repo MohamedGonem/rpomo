@@ -4,7 +4,12 @@ mod questions;
 
 fn main() {
     loop {
-        let session = questions::ask();
+        let Some(session) = questions::ask() else {
+            notfication::Notification::new("Pomodoro")
+                .body("See you next time!")
+                .send();
+            break;
+        };
         let mut current_session: usize = 0;
         for session_time in session.sessions_time.iter() {
             current_session += 1;
@@ -51,11 +56,10 @@ fn main() {
         std::thread::sleep(std::time::Duration::from_secs(60));
 
         if !loop_questions::ask_new() {
+            notfication::Notification::new("Pomodoro")
+                .body("All done! Great work today")
+                .send();
             break;
         }
     }
-
-    notfication::Notification::new("Pomodoro")
-        .body("All done! Great work today")
-        .send();
 }
